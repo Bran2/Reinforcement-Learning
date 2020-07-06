@@ -1,0 +1,71 @@
+RL_robot:
+  #Controller script for the RL_robot#
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  #  LLLLLLLLLFFFFFFFFFF
+  LF_HFE_position_controller:
+    type: effort_controllers/JointEffortController
+    joint: LF_HFE
+    #pid: {p: 300, i: 0.001, d: 10}
+
+  LF_KFE_position_controller:
+    type: effort_controllers/JointEffortController
+    joint: LF_KFE
+    #pid: {p: 600, i: 0.001, d: 10}
+
+  #  LLLLLLLLLHHHHHHHH
+  LH_HFE_position_controller:
+    type: effort_controllers/JointEffortController
+    joint: LH_HFE
+    #pid: {p: 300, i: 0.001, d: 10}
+
+  LH_KFE_position_controller:
+    type: effort_controllers/JointEffortController
+    joint: LH_KFE
+    #pid: {p: 600, i: 0.001, d: 10}
+
+  #  RRRRRRRFFFFFFFF
+  RF_HFE_position_controller:
+    type: effort_controllers/JointEffortController
+    joint: RF_HFE
+    #pid: {p: 300, i: 0.001, d: 10}
+
+  RF_KFE_position_controller:
+    type: effort_controllers/JointEffortController
+    joint: RF_KFE
+    #pid: {p: 600, i: 0.001, d: 10}
+
+  #  RRRRRRRHHHHHHHH
+  RH_HFE_position_controller:
+    type: effort_controllers/JointEffortController
+    joint: RH_HFE
+    #pid: {p: 300, i: 0.001, d: 10}
+
+  RH_KFE_position_controller:
+    type: effort_controllers/JointEffortController
+    joint: RH_KFE
+    #pid: {p: 600, i: 0.001, d: 10}
+  ####################################################
+  up_down_position_controller:
+    type: effort_controllers/JointEffortController
+    joint: up_down
+    #pid: {p: 600, i: 0.001, d: 10}
+
+  forward_backward_position_controller:
+    type: effort_controllers/JointEffortController
+    joint: forward_backward
+    #pid: {p: 600, i: 0.001, d: 10}
+
+gazebo_ros_control/pid_gains:
+  LF_HFE: {p: 600.0, i: 0.01, d: 1}
+  LH_HFE: {p: 600.0, i: 0.01, d: 1}
+  RF_HFE: {p: 600.0, i: 0.01, d: 1}
+  RH_HFE: {p: 600.0, i: 0.01, d: 1}
+  LF_KFE: {p: 600, i: 0.01, d: 1}
+  LH_KFE: {p: 600, i: 0.01, d: 1}
+  RF_KFE: {p: 600, i: 0.01, d: 1}
+  RH_KFE: {p: 600, i: 0.01, d: 1}
+  up_down: {p: 600, i: 0.01, d: 1}
+  forward_backward: {p: 600, i: 0.01, d: 1}
