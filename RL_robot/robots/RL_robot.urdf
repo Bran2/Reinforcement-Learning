@@ -1,0 +1,1331 @@
+<?xml version="1.0"?>
+<robot
+  name="RL_robot">
+
+<link name="world"/>
+
+ <joint name="grounding" type="fixed">
+    <origin xyz="0 0 0.75" rpy="1.5708 0 0"></origin>
+    <parent link="world"/>
+    <child link="forward_backward"/>
+  </joint>
+
+  <link
+    name="forward_backward">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.5" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/forward_backward.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/forward_backward.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="up_down">
+    <inertial>
+      <origin
+        xyz="4.16333634234434E-17 -0.0199999999999998 4.44089209850063E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.2" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/up_down.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/up_down.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="forward_backward"
+    type="prismatic">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="forward_backward" />
+    <child
+      link="up_down" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="10"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="base">
+    <inertial>
+      <origin
+        xyz="0 -0.0740143074166761 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.01" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/base.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="up_down"
+    type="prismatic">
+    <origin
+      xyz="0 -0.06 0"
+      rpy="0 0 0" />
+    <parent
+      link="up_down" />
+    <child
+      link="base" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-0.3"
+      upper="0"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="center_of_mass">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/center_of_mass.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/center_of_mass.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="center_of_mass"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base" />
+    <child
+      link="center_of_mass" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="LF_HIP">
+    <inertial>
+      <origin
+        xyz="5.55111512312578E-17 -0.00603191577528073 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0413475328046838" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LF_HIP.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LF_HIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LF_HAA"
+    type="revolute">
+    <origin
+      xyz="0.3 -0.10502 -0.15"
+      rpy="0 0 0" />
+    <parent
+      link="base" />
+    <child
+      link="LF_HIP" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="LF_SHANK">
+    <inertial>
+      <origin
+        xyz="0 -0.0664457851504855 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0791190416472512" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LF_SHANK.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LF_SHANK.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LF_HFE"
+    type="revolute">
+    <origin
+      xyz="0.0024886 -0.080667 0"
+      rpy="0 0 0" />
+    <parent
+      link="LF_HIP" />
+    <child
+      link="LF_SHANK" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.8"
+      upper="0.8"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="LF_KNEE">
+    <inertial>
+      <origin
+        xyz="0.0283889333015588 2.25673227272072E-07 -2.79728842866867E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0517428787817436" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LF_KNEE.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LF_KNEE.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LF_KFE"
+    type="revolute">
+    <origin
+      xyz="-0.0014584 -0.25498 0"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="LF_SHANK" />
+    <child
+      link="LF_KNEE" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.002"
+      upper="1.4"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="LF_FOOT">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.00654498469497874" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LF_FOOT.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LF_FOOT.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LF_FOOT"
+    type="fixed">
+    <origin
+      xyz="0.22646 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="LF_KNEE" />
+    <child
+      link="LF_FOOT" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="RF_HIP">
+    <inertial>
+      <origin
+        xyz="0 -0.00603191577528073 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0413475328046837" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RF_HIP.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RF_HIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RF_HAA"
+    type="revolute">
+    <origin
+      xyz="0.3 -0.10502 0.15"
+      rpy="0 0 0" />
+    <parent
+      link="base" />
+    <child
+      link="RF_HIP" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="RF_SHANK">
+    <inertial>
+      <origin
+        xyz="0 -0.0664457851504854 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0791190416472513" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RF_SHANK.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RF_SHANK.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RF_HFE"
+    type="revolute">
+    <origin
+      xyz="0.0024886 -0.080667 0"
+      rpy="0 0 0" />
+    <parent
+      link="RF_HIP" />
+    <child
+      link="RF_SHANK" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.8"
+      upper="0.8"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="RF_KNEE">
+    <inertial>
+      <origin
+        xyz="0.0283889333015588 2.2567322716105E-07 -2.79728843421978E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0517428787817436" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RF_KNEE.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RF_KNEE.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RF_KFE"
+    type="revolute">
+    <origin
+      xyz="-0.0014584 -0.25498 0"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="RF_SHANK" />
+    <child
+      link="RF_KNEE" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.002"
+      upper="1.4"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="RF_FOOT">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.00654498469497874" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RF_FOOT.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RF_FOOT.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RF_FOOT"
+    type="fixed">
+    <origin
+      xyz="0.22646 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="RF_KNEE" />
+    <child
+      link="RF_FOOT" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="RH_HIP">
+    <inertial>
+      <origin
+        xyz="0 -0.00603191577528073 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0413475328046837" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RH_HIP.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RH_HIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RH_HAA"
+    type="revolute">
+    <origin
+      xyz="-0.3 -0.10502 0.15"
+      rpy="0 0 0" />
+    <parent
+      link="base" />
+    <child
+      link="RH_HIP" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="RH_SHANK">
+    <inertial>
+      <origin
+        xyz="0 -0.0664457851504854 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0791190416472513" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RH_SHANK.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RH_SHANK.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RH_HFE"
+    type="revolute">
+    <origin
+      xyz="0.0024886 -0.080667 0"
+      rpy="-0 0 0" />
+    <parent
+      link="RH_HIP" />
+    <child
+      link="RH_SHANK" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.8"
+      upper="0.8"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="RH_KNEE">
+    <inertial>
+      <origin
+        xyz="0.0283889333015588 2.25673227202683E-07 -2.79728842311755E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0517428787817437" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RH_KNEE.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RH_KNEE.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RH_KFE"
+    type="revolute">
+    <origin
+      xyz="-0.0014584 -0.25498 0"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="RH_SHANK" />
+    <child
+      link="RH_KNEE" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.002"
+      upper="1.4"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="RH_FOOT">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.00654498469497874" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RH_FOOT.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/RH_FOOT.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RH_FOOT"
+    type="fixed">
+    <origin
+      xyz="0.22646 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="RH_KNEE" />
+    <child
+      link="RH_FOOT" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="LH_HIP">
+    <inertial>
+      <origin
+        xyz="0 -0.00603191577528073 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0413475328046838" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LH_HIP.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LH_HIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LH_HAA"
+    type="revolute">
+    <origin
+      xyz="-0.3 -0.10502 -0.15"
+      rpy="0 0 0" />
+    <parent
+      link="base" />
+    <child
+      link="LH_HIP" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="LH_SHANK">
+    <inertial>
+      <origin
+        xyz="0 -0.0664457851504854 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0791190416472512" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LH_SHANK.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LH_SHANK.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LH_HFE"
+    type="revolute">
+    <origin
+      xyz="0.0024886 -0.080667 0"
+      rpy="0 0 0" />
+    <parent
+      link="LH_HIP" />
+    <child
+      link="LH_SHANK" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.8"
+      upper="0.8"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="LH_KNEE">
+    <inertial>
+      <origin
+        xyz="0.0283889333015588 2.25673227174927E-07 -2.79728843421978E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.0517428787817437" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LH_KNEE.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LH_KNEE.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LH_KFE"
+    type="revolute">
+    <origin
+      xyz="-0.0014584 -0.25498 0"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="LH_SHANK" />
+    <child
+      link="LH_KNEE" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.002"
+      upper="1.4"
+      effort="200"
+      velocity="15" />
+  </joint>
+  <link
+    name="LH_FOOT">
+    <inertial>
+      <origin
+        xyz="0 0 -0.299999999999998"
+        rpy="0 0 0" />
+      <mass
+        value="0.00654498469497874" />
+      <inertia
+        ixx="0.001"
+        ixy="0"
+        ixz="0"
+        iyy="0.001"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LH_FOOT.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RL_robot/meshes/LH_FOOT.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LH_FOOT"
+    type="fixed">
+    <origin
+      xyz="0.22646 0 0.3"
+      rpy="0 0 0" />
+    <parent
+      link="LH_KNEE" />
+    <child
+      link="LH_FOOT" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <robotNamespace>/RL_robot</robotNamespace>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+  
+
+<gazebo reference="LF_FOOT">
+  <sensor name="LF_FOOT_contact_sensor" type="contact">
+    <always_on>true</always_on>
+    <update_rate>120.0</update_rate>
+    <contact>
+      <collision>LF_FOOT_collision</collision>
+    </contact>
+    <plugin name="gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
+      <bumperTopicName>/LF_FOOT_contact_sensor_state</bumperTopicName>
+      <frameName>LF_FOOT</frameName>
+    </plugin>
+  </sensor>
+</gazebo>
+  <gazebo reference="RF_FOOT">
+  <sensor name="RF_FOOT_contact_sensor" type="contact">
+    <always_on>true</always_on>
+    <update_rate>120.0</update_rate>
+    <contact>
+      <collision>RF_FOOT_collision</collision>
+    </contact>
+    <plugin name="gazebo_ros_bumper_controller_1" filename="libgazebo_ros_bumper.so">
+      <bumperTopicName>/RF_FOOT_contact_sensor_state</bumperTopicName>
+      <frameName>RF_FOOT</frameName>
+    </plugin>
+  </sensor>
+</gazebo>
+
+
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LF_HAA">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LF_HFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LF_KFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LH_HAA">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LH_HFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LH_KFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor6">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran7">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RF_HAA">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor7">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="tran8">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RF_HFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor8">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran9">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RF_KFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor9">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran10">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RH_HAA">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor10">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran11">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RH_HFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor11">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran12">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RH_KFE">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor12">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="tran13">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="forward_backward">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor13">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran14">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="up_down">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor14">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+</robot>

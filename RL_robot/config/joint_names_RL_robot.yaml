@@ -1,0 +1,1 @@
+controller_joint_names: ['up_down', 'base', 'LF_HAA', 'LF_HFE', 'LF_KFE', 'RF_HAA', 'RF_HFE', 'RF_KFE', 'RH_HAA', 'RH_HFE', 'RH_KFE', 'LH_HAA', 'LH_HFE', 'LH_KFE', ]
