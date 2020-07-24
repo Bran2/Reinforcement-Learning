@@ -1,11 +1,11 @@
-- **cd to the walker_gazebo file(walker_gazebo/launch/) & launch the robot model in gazebo:**
+- **cd to the RL_robot file(RL_robot/launch/) & launch the robot model in gazebo:**
 ```
-$ cd ddpg_biped/walker_gazebo/launch/
-$ roslaunch walker_gazebo.launch
+$ cd Reinforcement_Learning/RL_robot/launch/
+$ roslaunch gazebo.launch
 ```
 - **Run gym_ddpg3.py after launching the model in Gazebo environment.**
 ```
-$ cd ddpg_biped/walker_controller/src/ddpg2/
+$ cd Reinforcement_Learning/RL_robot_controller/src/
 $ python3 gym_ddpg3.py
 ```
 The <strong>reward function</strong> that is defined/shaped for the reinforcement problem is mentioned below (in <strong>gym_ddpg3.py</strong>):
